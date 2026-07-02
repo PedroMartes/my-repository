@@ -207,6 +207,22 @@ body {
     font-size: 0.85rem;
 }
 
+/* CORAÇÕES ESPALHADOS NO FUNDO */
+.hearts-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.scattered-heart {
+    position: absolute;
+    fill: var(--primary-red);
+    pointer-events: none;
+    transform-origin: center;
+}
+
 /* LIGHTBOX */
 .lightbox {
     position: fixed;
@@ -250,6 +266,60 @@ body {
     color: var(--primary-red);
 }
 
+/* Modal de fundo para cards */
+.card-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.card-modal-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 550px;
+    width: 30%;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.card-modal.active .card-modal-container {
+    transform: scale(1);
+}
+
+.card-modal-close {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.card-modal-close:hover {
+    color: #000;
+}
+
+.card-modal-body {
+    color: #333;
+    line-height: 1.6;
+}
+
 @media (max-width: 600px) {
     .lightbox img {
         max-width: 95%;
@@ -261,4 +331,9 @@ body {
         right: 18px;
         font-size: 32px;
     }
+
+    .card-modal-container {
+    max-width: 550px;
+    width: 90%;
+}
 }
