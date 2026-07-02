@@ -361,6 +361,12 @@ body {
     margin-bottom: 8px;
 }
 
+.tips {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+}
+
 @media (max-width: 600px) {
     .lightbox img {
         max-width: 95%;
