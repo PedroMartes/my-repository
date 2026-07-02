@@ -69,6 +69,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
+    const rainContainer = document.createElement('div');
+    rainContainer.classList.add('emoji-rain-container');
+    document.body.appendChild(rainContainer);
+
+    const emojis = ['❤️', '💖', '🎁', '💝', '✨', '🎈'];
+    const totalEmojis = 45;
+
+    for (let i = 0; i < totalEmojis; i++) {
+        const emojiElement = document.createElement('div');
+        emojiElement.classList.add('falling-emoji');
+        emojiElement.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+        const randomLeft = Math.random() * 100;
+        const randomDelay = Math.random() * 3;
+        const randomDuration = Math.random() * 3 + 2.5;
+        const randomSize = Math.random() * 20 + 20;
+
+        emojiElement.style.left = `${randomLeft}%`;
+        emojiElement.style.animationDelay = `${randomDelay}s`;
+        emojiElement.style.animationDuration = `${randomDuration}s`;
+        emojiElement.style.fontSize = `${randomSize}px`;
+
+        rainContainer.appendChild(emojiElement);
+
+        setTimeout(() => {
+            emojiElement.remove();
+        }, (randomDelay + randomDuration) * 1000);
+    }
+
+    setTimeout(() => {
+        rainContainer.remove();
+    }, 6500);
+
     const heartsContainer = document.querySelector('.hearts-background');
     const totalHearts = 35;
 
