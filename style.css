@@ -318,6 +318,19 @@ body {
 .card-modal-body {
     color: #333;
     line-height: 1.6;
+    font-size: 1.15rem; /* Aumenta o texto base do card (ajuste se preferir maior) */
+}
+
+.card-modal-body h2,
+.card-modal-body h3 {
+    font-size: 1.6rem; 
+    margin-bottom: 12px;
+}
+
+/* Garante que os parágrafos tenham um espaçamento confortável na tela grande */
+.card-modal-body p {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
 }
 
 @media (max-width: 600px) {
