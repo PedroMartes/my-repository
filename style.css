@@ -92,8 +92,10 @@ body {
 
 .timeline-image {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Força a imagem a ser um quadrado perfeito */
-    object-fit: cover;   /* Corta a imagem no centro sem distorcer */
+    aspect-ratio: 1 / 1;
+    /* Força a imagem a ser um quadrado perfeito */
+    object-fit: cover;
+    /* Corta a imagem no centro sem distorcer */
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     display: block;
@@ -134,18 +136,34 @@ body {
 }
 
 /* FORÇA TODOS OS ELEMENTOS A FICAREM NA MESMA LINHA HORIZONTAL */
-.timeline-row > div {
+.timeline-row>div {
     grid-row: 1;
 }
 
 /* MAPEAMENTO SIMÉTRICO DE POSIÇÃO CORRIGIDO */
-.left-image .timeline-image-wrapper { grid-column: 1; }
-.left-image .timeline-node          { grid-column: 2; }
-.left-image .timeline-text-wrapper  { grid-column: 3; }
+.left-image .timeline-image-wrapper {
+    grid-column: 1;
+}
 
-.right-image .timeline-image-wrapper { grid-column: 3; }
-.right-image .timeline-node           { grid-column: 2; }
-.right-image .timeline-text-wrapper   { grid-column: 1; }
+.left-image .timeline-node {
+    grid-column: 2;
+}
+
+.left-image .timeline-text-wrapper {
+    grid-column: 3;
+}
+
+.right-image .timeline-image-wrapper {
+    grid-column: 3;
+}
+
+.right-image .timeline-node {
+    grid-column: 2;
+}
+
+.right-image .timeline-text-wrapper {
+    grid-column: 1;
+}
 
 
 /* ==========================================================================
@@ -153,31 +171,39 @@ body {
    ========================================================================== */
 @media (max-width: 600px) {
     .timeline-container {
-        padding: 10px; /* Reduz margens laterais da página */
+        padding: 10px;
+        /* Reduz margens laterais da página */
     }
 
     .timeline-row {
-        grid-template-columns: 1fr 24px 1fr; /* Diminui a coluna do coração para dar espaço às laterais */
-        gap: 10px; /* Reduz o espaço entre os elementos para não esmagar o texto */
-        margin-bottom: 40px; /* Diminui a distância vertical entre as memórias */
+        grid-template-columns: 1fr 24px 1fr;
+        /* Diminui a coluna do coração para dar espaço às laterais */
+        gap: 10px;
+        /* Reduz o espaço entre os elementos para não esmagar o texto */
+        margin-bottom: 40px;
+        /* Diminui a distância vertical entre as memórias */
     }
 
     .heart-icon {
-        width: 16px; /* Coração menor para telas pequenas */
+        width: 16px;
+        /* Coração menor para telas pequenas */
         height: 16px;
     }
 
     .timeline-text-wrapper {
-        padding: 12px; /* Reduz o espaçamento interno do bloco de texto */
+        padding: 12px;
+        /* Reduz o espaçamento interno do bloco de texto */
     }
 
     .timeline-text-wrapper h3 {
-        font-size: 0.95rem; /* Ajusta o tamanho do título */
+        font-size: 0.95rem;
+        /* Ajusta o tamanho do título */
         margin: 3px 0 5px 0;
     }
 
     .timeline-text-wrapper p {
-        font-size: 0.75rem; /* Ajusta o tamanho da descrição */
+        font-size: 0.75rem;
+        /* Ajusta o tamanho da descrição */
         line-height: 1.4;
     }
 
@@ -186,14 +212,15 @@ body {
     }
 
     .timeline-image {
-        max-height: 160px; /* Limita a altura da imagem para manter proporção no celular */
+        max-height: 160px;
+        /* Limita a altura da imagem para manter proporção no celular */
         border-radius: 8px;
     }
 
     .timeline-header h1 {
         font-size: 1.7rem;
     }
-    
+
     .timeline-header p {
         font-size: 0.9rem;
     }
@@ -318,12 +345,13 @@ body {
 .card-modal-body {
     color: #333;
     line-height: 1.6;
-    font-size: 1.15rem; /* Aumenta o texto base do card (ajuste se preferir maior) */
+    font-size: 1.15rem;
+    /* Aumenta o texto base do card (ajuste se preferir maior) */
 }
 
 .card-modal-body h2,
 .card-modal-body h3 {
-    font-size: 1.6rem; 
+    font-size: 1.6rem;
     margin-bottom: 12px;
 }
 
@@ -346,7 +374,9 @@ body {
     }
 
     .card-modal-container {
-    max-width: 550px;
-    width: 90%;
-}
+        padding: 20px 15px;
+        /* Reduz o espaçamento interno para o texto grande não ficar espremido */
+        width: 92%;
+        /* Aproveita ligeiramente melhor a largura da tela do celular */
+    }
 }
