@@ -1,0 +1,264 @@
+:root {
+    --bg-color: #fff5f5;
+    --card-bg: #ffffff;
+    --primary-red: #b32741;
+    --text-dark: #2b2b2b;
+    --text-muted: #888888;
+    --line-color: #ffccd5;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    /* Cria o gradiente do vermelho primário até a cor de fundo por 400px */
+    background-image: linear-gradient(to bottom, var(--primary-red), var(--bg-color) 400px);
+    background-repeat: no-repeat;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.timeline-header {
+    text-align: center;
+    padding: 50px 20px 30px 20px;
+}
+
+.timeline-header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: var(--bg-color);
+}
+
+.timeline-header p {
+    color: var(--bg-color);
+    margin-top: 8px;
+}
+
+/* CONTAINER */
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Linha Central (Universal para PC e Celular) */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background-color: var(--line-color);
+    z-index: 1;
+}
+
+/* LINHAS DO GRID (Mantém 3 colunas sempre) */
+.timeline-row {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+/* CORAÇÃO CENTRAL */
+.timeline-node {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    background-color: var(--bg-color);
+    padding: 10px 0;
+}
+
+.heart-icon {
+    width: 22px;
+    height: 22px;
+    fill: var(--primary-red);
+}
+
+/* COMPONENTES DE IMAGEM E TEXTO */
+.timeline-image-wrapper {
+    z-index: 2;
+}
+
+.timeline-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Força a imagem a ser um quadrado perfeito */
+    object-fit: cover;   /* Corta a imagem no centro sem distorcer */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    display: block;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.timeline-image:hover {
+    transform: scale(1.03);
+    filter: brightness(0.92);
+}
+
+.timeline-text-wrapper {
+    z-index: 2;
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+
+.memory-mini-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.timeline-text-wrapper h3 {
+    margin: 5px 0 10px 0;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+}
+
+.timeline-text-wrapper p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+/* FORÇA TODOS OS ELEMENTOS A FICAREM NA MESMA LINHA HORIZONTAL */
+.timeline-row > div {
+    grid-row: 1;
+}
+
+/* MAPEAMENTO SIMÉTRICO DE POSIÇÃO CORRIGIDO */
+.left-image .timeline-image-wrapper { grid-column: 1; }
+.left-image .timeline-node          { grid-column: 2; }
+.left-image .timeline-text-wrapper  { grid-column: 3; }
+
+.right-image .timeline-image-wrapper { grid-column: 3; }
+.right-image .timeline-node           { grid-column: 2; }
+.right-image .timeline-text-wrapper   { grid-column: 1; }
+
+
+/* ==========================================================================
+   OTIMIZAÇÃO PARA TELAS DE CELULAR (SEM QUEBRAR O LAYOUT)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .timeline-container {
+        padding: 10px; /* Reduz margens laterais da página */
+    }
+
+    .timeline-row {
+        grid-template-columns: 1fr 24px 1fr; /* Diminui a coluna do coração para dar espaço às laterais */
+        gap: 10px; /* Reduz o espaço entre os elementos para não esmagar o texto */
+        margin-bottom: 40px; /* Diminui a distância vertical entre as memórias */
+    }
+
+    .heart-icon {
+        width: 16px; /* Coração menor para telas pequenas */
+        height: 16px;
+    }
+
+    .timeline-text-wrapper {
+        padding: 12px; /* Reduz o espaçamento interno do bloco de texto */
+    }
+
+    .timeline-text-wrapper h3 {
+        font-size: 0.95rem; /* Ajusta o tamanho do título */
+        margin: 3px 0 5px 0;
+    }
+
+    .timeline-text-wrapper p {
+        font-size: 0.75rem; /* Ajusta o tamanho da descrição */
+        line-height: 1.4;
+    }
+
+    .memory-date {
+        font-size: 0.65rem;
+    }
+
+    .timeline-image {
+        max-height: 160px; /* Limita a altura da imagem para manter proporção no celular */
+        border-radius: 8px;
+    }
+
+    .timeline-header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .timeline-header p {
+        font-size: 0.9rem;
+    }
+}
+
+/* FOOTER */
+.timeline-footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 1000;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--primary-red);
+}
+
+@media (max-width: 600px) {
+    .lightbox img {
+        max-width: 95%;
+        max-height: 80%;
+    }
+
+    .lightbox-close {
+        top: 16px;
+        right: 18px;
+        font-size: 32px;
+    }
+}
